@@ -13,12 +13,13 @@ TARBALL=$(PACKAGE).tar
 
 all: tarball
 
-
 # Really would like this to clean the elc files of the package_parts
 clean-elc:
 	rm -f *.elc
 
 clean: clean-elc
+	rm -rf eshell.info
+	rm -rf dir
 	rm -rf .elpa
 	rm -rf $(TARBALL)
 	rm -rf $(PACKAGE) 
@@ -37,7 +38,10 @@ $(PACKAGE): $(package_parts)
 $(PACKAGE)/$(NAME)-pkg.el:
 	echo "(define-package \"$(NAME)\" \"$(VERSION)\" \"$(DOC)\" `cat $(REQUIREMENTS)`)" > $@
 
-README:
-	cat README.creole > README
+dir: eshell.info
+	install-info --dir=dir eshell.info
+
+eshell.info:
+	makeinfo eshell.texi
 
 # End
