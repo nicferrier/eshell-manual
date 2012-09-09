@@ -2,6 +2,7 @@
 @c %**start of header
 @setfilename ../../info/eshell
 @settitle Eshell: The Emacs Shell
+@defindex cm
 @synindex vr fn
 @c %**end of header
 
@@ -87,6 +88,7 @@ handling the sort of tasks accomplished by those tools.
 * Concept Index::
 * Function and Variable Index::
 * Key Index::
+* Command Index::
 @end menu
 
 @node What is Eshell?
@@ -314,9 +316,174 @@ then it tries to execute it as an external command.
 @node Aliases
 @section Aliases
 
+Aliases are commands that expand to a longer input line.  For example,
+@command{ll} is a common alias for @code{ls -l}; with this defined,
+running @samp{ll foo} in Eshell will actually run @samp{ls -l foo}.
+
+They are defined in the file specified by @var{eshell-aliases-file}, one
+per line, in the form @samp{alias ll ls -l} (using the above example).
+
 @node History
 @section History
+The @samp{history} command shows all commands kept in the history ring
+as numbered list.  If the history ring contains
+@code{eshell-history-size} commands, those numbers change after every
+command invocation, therefore the @samp{history} command shall be
+applied before using the expansion mechanism with history numbers.
 
+The n-th entry of the history ring can be applied with the @samp{!n}
+command.  If @code{n} is negative, the entry is counted from the end
+of the history ring.
+
+@samp{!foo} expands to the last command beginning with @code{foo}, and
+@samp{!?foo} to the last command containing @code{foo}.  The n-th
+argument of the last command beginning with @code{foo} is accessible
+by @code{!foo:n}.
+
+The history ring is loaded from a file at the start of every session,
+and written back to the file at the end of every session.  The file path
+is specified in @var{eshell-history-file-name}.  Unlike other shells,
+such as Bash, Eshell can not be configured to keep a history ring of a
+different size than the size of the history file.
+
+@node Scripts
+@section Scripts
+
+@node Built-ins
+
+@section Built-in commands
+
+Several commands are built-in in Eshell.  In order to call the
+external variant of a built-in command @code{foo}, you could call
+@code{*foo}.  Usually, this should not be necessary.  You can check
+what will be applied by the @code{which} command:
+
+@example
+~ $ which ls
+eshell/ls is a compiled Lisp function in `em-ls.el'
+~ $ which *ls
+/bin/ls
+@end example
+
+@vindex eshell-prefer-lisp-functions
+If you would prefer to use the built-in commands instead of the external
+commands, set @var{eshell-prefer-lisp-functions} to @code{t}.
+
+Some of the built-in commands have different behaviour from their
+external counterparts, and some have no external counterpart.  Most of
+these will print a useage message when given the @code{--help} option.
+
+@table @code
+
+@item addpath
+@cmindex addpath
+Adds a given path or set of paths to the PATH environment variable, or,
+with no arguments, prints the current paths in this variable.
+
+@item alias
+@cmindex alias
+Define an alias (@pxref{Aliases}).  This does not add it to the aliases
+file.
+
+@item date
+@cmindex date
+Similar to, but slightly different from, the GNU Coreutils
+@command{date} command.
+
+@item define
+@cmindex define
+Define a varalias.  @xref{Variable Aliases, , , elisp}.
+
+@item diff
+@cmindex diff
+Use Emacs's internal @code{diff} (not to be confused with
+@code{ediff}).  @xref{Comparing Files, , , elisp}.
+
+@item grep
+@cmindex grep
+@itemx agrep
+@cmindex agrep
+@itemx egrep
+@cmindex egrep
+@itemx fgrep
+@cmindex fgrep
+@itemx glimpse
+@cmindex glimpse
+The @command{grep} commands are compatible with GNU @command{grep}, but
+use Emacs's internal @code{grep} instead.
+
+@item info
+@cmindex info
+Same as the external @command{info} command, but uses Emacs's internal
+Info reader.
+
+@item jobs
+@cmindex jobs
+List subprocesses of the Emacs process, if any, using the function
+@code{list-processes}.
+
+@item kill
+@cmindex kill
+Kill processes, buffers, symbol or files.  Only killing of processes is
+implemented, so far.
+
+@item listify
+@cmindex listify
+Eshell version of @code{list}.  Allows you to create a list using Eshell
+syntax, rather than Elisp syntax.  For example, @samp{listify foo bar}
+and @code{("foo" "bar")} both evaluate to @code{("foo" "bar")}.
+
+@item locate
+@cmindex locate
+Alias to Emacs's @code{locate} function, which simply runs the external
+@command{locate} command and parses the results.  @xref{Dired and `find', , , elisp}.
+
+@item make
+@cmindex make
+Run @command{make} through @code{compile}.  @xref{Running Compilations under Emacs, , , elisp}.
+
+@item occur
+@cmindex occur
+Alias to Emacs's @code{occur}.  @xref{Other Search-and-Loop Commands, , , elisp}.
+
+@item printnl
+@cmindex printnl
+Print the arguments separated by newlines.
+
+@item cd
+@cmindex cd
+This command changes the current working directory.  Usually, it is
+invoked as @samp{cd foo} where @file{foo} is the new working directory.
+But @command{cd} knows about a few special arguments:
+
+When it receives no argument at all, it changes to the home directory.
+
+Giving the command @samp{cd -} changes back to the previous working
+directory (this is the same as @samp{cd $-}).
+
+The command @samp{cd =} shows the directory stack.  Each line is
+numbered.
+
+With @samp{cd =foo}, Eshell searches the directory stack for a directory
+matching the regular expression @samp{foo} and changes to that
+directory.
+
+With @samp{cd -42}, you can access the directory stack by number.
+
+@item history
+@cmindex history
+@xref{History}.
+
+@item su
+@cmindex su
+@itemx sudo
+@cmindex sudo
+Uses TRAMP's @command{su} or @command{sudo} method to run a command via
+@command{su} or @command{sudo}.
+
+@end table
+
+@section Built-in variables
 Eshell knows a few built-in variables:
 
 @table @code
@@ -345,94 +512,6 @@ This variable contains the exit code of the last command (0 or 1 for
 Lisp functions, based on successful completion).
 
 @end table
-
-@node Scripts
-@section Scripts
-
-
-@node Built-ins
-@section Built-in commands
-
-Several commands are built-in in Eshell.  In order to call the
-external variant of a built-in command @code{foo}, you could call
-@code{*foo}.  Usually, this should not be necessary.  You can check
-what will be applied by the @code{which} command:
-
-@example
-~ $ which ls
-eshell/ls is a compiled Lisp function in `em-ls.el'
-~ $ which *ls
-/bin/ls
-@end example
-
-Some of the built-in commands have a special behaviour in Eshell:
-
-@table @code
-
-@item cd
-@findex cd
-This command changes the current working directory.  Usually, it is
-invoked as @samp{cd foo} where @file{foo} is the new working
-directory.  But @code{cd} knows about a few special arguments:
-
-When it receives no argument at all, it changes to the home directory.
-
-Giving the command @samp{cd -} changes back to the previous working
-directory (this is the same as @samp{cd $-}).
-
-The command @samp{cd =} shows the directory stack.  Each line is
-numbered.
-
-With @samp{cd =foo}, Eshell searches the directory stack for a
-directory matching the regular expression @samp{foo} and changes to
-that directory.
-
-With @samp{cd -42}, you can access the directory stack by number.
-
-@item history
-@findex history
-The @samp{history} command shows all commands kept in the history ring
-as numbered list.  If the history ring contains
-@code{eshell-history-size} commands, those numbers change after every
-command invocation, therefore the @samp{history} command shall be
-applied before using the expansion mechanism with history numbers.
-
-The n-th entry of the history ring can be applied with the @samp{!n}
-command.  If @code{n} is negative, the entry is counted from the end
-of the history ring.
-
-@samp{!foo} expands to the last command beginning with @code{foo}, and
-@samp{!?foo} to the last command containing @code{foo}.  The n-th
-argument of the last command beginning with @code{foo} is accessible
-by @code{!foo:n}.
-
-@item su
-@findex su
-@itemx sudo
-@findex sudo
-@code{su} and @code{sudo} work as expected: they apply the following
-commands (@code{su}), or the command being an argument (@code{sudo})
-under the permissions of somebody else.
-
-This does not work only on
-the local host, but even on a remote one, when
-@code{default-directory} is a remote file name.  The necessary
-proxy configuration of Tramp is performed
-@ifinfo
-automatically, @ref{Multi-hops, , , tramp}.
-@end ifinfo
-@ifnotinfo
-automatically.
-@end ifnotinfo
-Example:
-
-@example
-~ $ cd /ssh:otherhost:/etc
-/ssh:user@@otherhost:/etc $ sudo find-file shadow
-@end example
-
-@end table
-
 
 @node Arguments
 @chapter Arguments
@@ -477,7 +556,6 @@ Example:
 * Key rebinding::
 * Smart scrolling::
 * Terminal emulation::
-* Built-in UNIX commands::
 @end menu
 
 @node Writing a module
@@ -497,10 +575,6 @@ Example:
 
 @node Terminal emulation
 @section Terminal emulation
-
-@node Built-in UNIX commands
-@section Built-in UNIX commands
-
 
 @node Extras and Goodies
 @chapter Extras and Goodies
@@ -993,6 +1067,11 @@ Since it keeps the cursor up where the command was invoked.
 @unnumbered Function and Variable Index
 
 @printindex fn
+
+@node Command Index
+@unnumbered Command Index
+
+@printindex cm
 
 @node Key Index
 @unnumbered Key Index
