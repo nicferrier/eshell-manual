@@ -1,0 +1,5 @@
+* Overview
+This is an effort to fill in the missing bits of the manual for Ehsell, the Emacs Shell.  It is based on the [[http://git.savannah.gnu.org/cgit/emacs.git/tree/doc/misc/eshell.texi?h%3Demacs-23][Eshell manual from Emacs23]].
+
+* Licensing
+I will be submitting this to be included in Emacs as a patch to the official manual, so I will assign copyright on this file to the [[https://www.fsf.org/][FSF]].  If you wish to make any contributions to this effort, you will have to do the same.

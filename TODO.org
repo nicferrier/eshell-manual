@@ -1,0 +1,76 @@
+#+STARTUP: content
+
+* Documentation
+** DONE Built-in commands [52/52]
+Document each built-in command that has behaviour different to the external command of the same name.
+
+- [X] .
+- [X] addpath
+- [X] agrep
+- [X] alias
+- [X] basename
+- [X] cat
+- [X] cd
+- [X] cp
+- [X] date
+- [X] define
+- [X] diff
+- [X] dirname
+- [X] dirs
+- [X] du
+- [X] echo
+- [X] egrep
+- [X] env
+- [X] eshell-debug
+- [X] exit
+- [X] export
+- [X] fgrep
+- [X] glimpse
+- [X] grep
+- [X] history
+- [X] info
+- [X] jobs
+- [X] kill
+- [X] listify
+- [X] ln
+- [X] locate
+- [X] ls
+- [X] make
+- [X] man
+- [X] mkdir
+- [X] mv
+- [X] occur
+- [X] popd
+- [X] printnl
+- [X] pushd
+- [X] pwd
+- [X] rm
+- [X] rmdir
+- [X] setq
+- [X] source
+- [X] su
+- [X] sudo
+- [X] time
+- [X] umask
+- [X] unset
+- [X] wait
+- [X] which
+- [X] whoami
+
+** TODO "Arguments" chapter
+Write an overview paragraph, and fill in each subsection.
+
+*** TODO "The Parser" subsection
+For now, I've made this refer the reader to =eshell-display-predicate-help= and =eshell-display-predicate-help=, but the reference does not belong in the source code, and should be moved to the manual/
+
+*** TODO "Variables" subsection
+** TODO "Input/Output" chapter
+Document redirection.
+
+** TODO "Extention modules" chapter
+- [X] Find out from johnw what this should cover.
+<johnw> aidalgol: check out em-banner.el [2012-09-05 Wed 16:59]
+
+* Code
+** TODO Fix =eshell/kill=
+Add ability to kill non-process objects to match the documentation.
