@@ -114,4 +114,4 @@ This should be removed until the manual is finished and there are any miscellane
 ** TODO Fix =eshell/kill=
 Add ability to kill non-process objects to match the documentation.
 ** TODO Bug squashing
-Squash any easy bugs mentioned at the end of the manual
+Squash any easy bugs mentioned at the end of the manual.
