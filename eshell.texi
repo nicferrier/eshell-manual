@@ -325,6 +325,7 @@ per line, in the form @samp{alias ll ls -l} (using the above example).
 
 @node History
 @section History
+@cmindex history
 The @samp{history} command shows all commands kept in the history ring
 as numbered list.  If the history ring contains
 @code{eshell-history-size} commands, those numbers change after every
@@ -469,10 +470,6 @@ matching the regular expression @samp{foo} and changes to that
 directory.
 
 With @samp{cd -42}, you can access the directory stack by number.
-
-@item history
-@cmindex history
-@xref{History}.
 
 @item su
 @cmindex su
