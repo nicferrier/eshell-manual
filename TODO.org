@@ -16,7 +16,7 @@ Briefly describe Eshell aliases, and mention the aliases file.
 *** DONE /History/
 Appears to be complete already.  Mention the history file.
 
-*** TODO /Scripts/
+*** DONE /Scripts/
 Briefly describe how scripts are loaded.
 
 *** TODO /Built-ins/ [1/2]
