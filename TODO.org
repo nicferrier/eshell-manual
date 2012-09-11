@@ -112,6 +112,7 @@ This should be removed until the manual is finished and there are any miscellane
 
 * Code
 ** TODO Fix =eshell/kill=
-Add ability to kill non-process objects to match the documentation.
+Add ability to kill non-process objects to match the documentation, and update the documentation to describe usage in more detail.
+
 ** TODO Bug squashing
 Squash any easy bugs mentioned at the end of the manual.
