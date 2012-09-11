@@ -547,7 +547,9 @@ Lisp functions, based on successful completion).
 
 @node Predicates
 @section Predicates
-
+Eshell recognises Zsh-style predicates (@pxref{Filename Generation, , ,
+zsh}).  Run @samp{eshell-display-predicate-help} and
+@samp{eshell-display-modifier-help} for a syntax reference.
 
 @node Input/Output
 @chapter Input/Output
