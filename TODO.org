@@ -100,7 +100,7 @@ I have briefly mentioned Eshell's support for Zsh-style globbing and reference t
 ** TODO /Input/Output/
 Document redirection.
 
-** TODO /Process control/
+** DONE /Process control/
 Remove this chapter and mention Eshell's lack of job control in the "Invocation" chapter.  Also mention the Bash-like =&= separator.
 
 ** TODO /Extension modules/

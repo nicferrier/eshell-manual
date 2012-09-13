@@ -310,6 +310,8 @@ Eshell looks first for an alias with the same name as the command, then
 a function or @ref{Built-ins, built-in command} with the same name, and
 then it tries to execute it as an external command.
 
+The semicolon (@code{;}) can be used to separate multiple command invocations on a single line.  A command invocation followed by an ampersand (@code{&}) will be run in the background.  Eshell has no job control, so you can not suspend or background the current process, or bring a background process into the foreground.  That said, background processes invoked from Eshell can be controlled the same way as any other background process in Emacs.
+
 @node Completion
 @section Completion
 
@@ -553,9 +555,6 @@ zsh}).  Run @samp{eshell-display-predicate-help} and
 
 @node Input/Output
 @chapter Input/Output
-
-@node Process control
-@chapter Process control
 
 @node Extension modules
 @chapter Extension modules
