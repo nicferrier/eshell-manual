@@ -101,7 +101,7 @@ I have briefly mentioned Eshell's support for Zsh-style globbing and reference t
 Document redirection.
 
 ** TODO /Process control/
-I don't think this is handled any differently in Eshell, in which case, remove this (empty) chapter and just add a mention in the indirection to the "Invocation" chapter.
+Remove this chapter and mention Eshell's lack of job control in the "Invocation" chapter.  Also mention the Bash-like =&= separator.
 
 ** TODO /Extension modules/
 - [X] Find out from johnw what this should cover.
