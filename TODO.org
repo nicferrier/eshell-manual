@@ -1,26 +1,26 @@
 #+STARTUP: content
 
 * Documentation
-** TODO /Commands/
+** TODO "Commands" chapter
 Expand introductory paragraph.
 
-*** TODO /Invocation/
+*** TODO "Invocation" section
 Expand this a bit to mention how external commands are invoked, the order of searching, and refer to the section on the parser.
 
-*** TODO /Completion/
+*** TODO "Completion" section
 Document Eshell completion.
 
-*** DONE /Aliases/
+*** DONE "Aliases" section
 Briefly describe Eshell aliases, and mention the aliases file.
 
-*** DONE /History/
+*** DONE "History" section
 Appears to be complete already.  Mention the history file.
 
-*** DONE /Scripts/
+*** DONE "Scripts" section
 Briefly describe how scripts are loaded.
 
-*** TODO /Built-ins/ [1/2]
-**** DONE /Built-in commands/ [52/52]
+*** TODO "Built-ins" node [1/2]
+**** DONE "Built-in commands" section [52/52]
 Document each built-in command that has behaviour different to the external command of the same name.
 
 - [X] .
@@ -76,38 +76,38 @@ Document each built-in command that has behaviour different to the external comm
 - [X] which
 - [X] whoami
 
-**** TODO /Built-in variables/
+**** TODO "Built-in variables" section
 This appears to be complete, but check the source for any unmentioned variables.
 
-** TODO /Arguments/
+** TODO "Arguments" chapter
 Write an overview paragraph, and fill in each subsection.
 
-*** TODO /The Parser/
+*** TODO "The Parser" section
 This should probably be the name of the chapter, instead of "Arguments".
 
-*** TODO /Variables/
+*** TODO "Variables" section
 Document how variables are handled; most importantly, whether the scope is different from the rest of Emacs.
 
-*** TODO /Substitution/
+*** TODO "Substitution" section
 Document substitution.  e.g. ${command} => output of command
 
-*** TODO /Globbing/
+*** TODO "Globbing" section
 Document globbing.  e.g. *.el
 
-*** TODO /Predicates/
+*** TODO "Predicates" section
 I have briefly mentioned Eshell's support for Zsh-style globbing and reference the Zsh manual.  For now, I have also made this refer the reader to =eshell-display-predicate-help= and =eshell-display-predicate-help=, but the reference does not belong in the source code, and should be moved to the manual.
 
-** TODO /Input/Output/
+** TODO "Input/Output" chapter
 Document redirection.
 
-** DONE /Process control/
+** DONE "Process control" chapter
 Remove this chapter and mention Eshell's lack of job control in the "Invocation" chapter.  Also mention the Bash-like =&= separator.
 
-** TODO /Extension modules/
+** TODO "Extension modules" chapter
 - [X] Find out from johnw what this should cover.
 ~<johnw> aidalgol: check out em-banner.el~
 
-** TODO /Extras and Goodies/
+** TODO "Extras and Goodies" chapter
 This should be removed until the manual is finished and there are any miscellaneous topics left undocumented.
 
 * Code
