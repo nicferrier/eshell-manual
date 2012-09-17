@@ -549,9 +549,23 @@ Lisp functions, based on successful completion).
 
 @node Predicates
 @section Predicates
-Eshell recognises Zsh-style predicates (@pxref{Filename Generation, , ,
-zsh}).  Run @samp{eshell-display-predicate-help} and
-@samp{eshell-display-modifier-help} for a syntax reference.
+Eshell recognises Zsh-style predicates; @xref{Filename Generation, , , zsh} for full syntax.  The syntax can be customized with the following options:
+
+@defvr{User Option} @code{eshell-predicate-alist}
+A list of modifiers than can be applied to an argument expansion.  The
+format of each entry is
+@example
+@code{(CHAR ENTRYWISE-P MODIFIER-FUNC-SEXP)}
+@end example
+@end defvr
+
+@defvr{User Option} @code{eshell-modifier-alist}
+A list of predicates than can be applied to a globbing pattern.  The
+format of each entry is
+@example
+@code{(CHAR . PREDICATE-FUNC-SEXP)}
+@end example
+@end defvr
 
 @node Input/Output
 @chapter Input/Output

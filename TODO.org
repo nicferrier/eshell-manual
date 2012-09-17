@@ -94,8 +94,8 @@ Document substitution.  e.g. ${command} => output of command
 *** TODO "Globbing" section
 Document globbing.  e.g. *.el
 
-*** TODO "Predicates" section
-I have briefly mentioned Eshell's support for Zsh-style globbing and reference the Zsh manual.  For now, I have also made this refer the reader to =eshell-display-predicate-help= and =eshell-display-predicate-help=, but the reference does not belong in the source code, and should be moved to the manual.
+*** DONE "Predicates" section
+Briefly mentioned Eshell's support for Zsh-style globbing, referring reader to the Zsh manual.  Also mentions the customizable options =eshell-predicate-alist= and =eshell-modifier-alist=.
 
 ** TODO "Input/Output" chapter
 Document redirection.
@@ -115,7 +115,7 @@ This should be removed until the manual is finished and there are any miscellane
 Add ability to kill non-process objects to match the documentation, and update the documentation to describe usage in more detail.
 
 ** TODO Remove predicate reference
-Remove the functions =eshell-display-predicate-help= and =eshell-display-predicate-help= and their associated variables, after copying the reference to the manual.  See [["Predicates"%20section][the corresponding TODO item for the documentation]].
+Remove the functions =eshell-display-predicate-help= and =eshell-display-predicate-help= and their associated variables, since this is already better documented in the Zsh manual.  See [["Predicates"%20section][the corresponding TODO item for the documentation]].
 
 ** TODO Bug squashing
 Squash any easy bugs mentioned at the end of the manual.
