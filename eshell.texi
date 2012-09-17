@@ -80,7 +80,6 @@ handling the sort of tasks accomplished by those tools.
 * Commands::
 * Arguments::
 * Input/Output::
-* Process control::
 * Extension modules::
 * Extras and Goodies::
 * Bugs and ideas::              Known problems, and future ideas.
@@ -549,7 +548,7 @@ Lisp functions, based on successful completion).
 
 @node Predicates
 @section Predicates
-Eshell recognises Zsh-style predicates; @xref{Filename Generation, , , zsh} for full syntax.  The syntax can be customized with the following options:
+Eshell recognises Zsh-style predicates; see @ref{Filename Generation, , , zsh} for full syntax.  The syntax can be customized with the following options:
 
 @defvr{User Option} @code{eshell-predicate-alist}
 A list of modifiers than can be applied to an argument expansion.  The
