@@ -1,7 +1,7 @@
 #+STARTUP: content
 
 * Documentation
-** TODO "Commands" chapter
+** DONE "Commands" chapter
 Expand introductory paragraph.
 
 *** DONE "Invocation" section
