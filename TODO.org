@@ -117,5 +117,8 @@ Remove the functions =eshell-display-predicate-help= and =eshell-display-predica
 ** TODO Angle brackets
 Figure out what angle brackets mean in Eshell.  See lines 37-39 of ~esh-var.el~.  They seem to be a half-baked implementation of Bash's =<()= behaviour.
 
+** TODO =su= and =sudo= problems
+Determine the cause of the erratic behaviour of the =su= and =sudo= commands that keeps coming up in ~#emacs~.
+
 ** TODO Bug squashing
 Squash any easy bugs mentioned at the end of the manual.
