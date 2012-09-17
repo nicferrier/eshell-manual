@@ -117,5 +117,8 @@ Add ability to kill non-process objects to match the documentation, and update t
 ** TODO Remove predicate reference
 Remove the functions =eshell-display-predicate-help= and =eshell-display-predicate-help= and their associated variables, since this is already better documented in the Zsh manual.  See [["Predicates"%20section][the corresponding TODO item for the documentation]].
 
+** TODO Angle brackets
+Figure out what angle brackets mean in Eshell.  See lines 37-39 of ~esh-var.el~.  They seem to be a half-baked implementation of Bash's =<()= behaviour.
+
 ** TODO Bug squashing
 Squash any easy bugs mentioned at the end of the manual.
