@@ -79,17 +79,14 @@ Document each built-in command that has behaviour different to the external comm
 **** TODO "Built-in variables" section
 This appears to be complete, but check the source for any unmentioned variables.
 
-** TODO "Arguments" chapter
+** DONE "Arguments" chapter
 Write an overview paragraph, and fill in each subsection.
 
-*** TODO "The Parser" section
-This should probably be the name of the chapter, instead of "Arguments".
+*** DONE "Variables" section
+Document how variables are handled.
 
-*** TODO "Variables" section
-Document how variables are handled; most importantly, whether the scope is different from the rest of Emacs.
-
-*** TODO "Substitution" section
-Document substitution.  e.g. ${command} => output of command
+*** TODO "Expansion" section
+Clarify =$var[: i j]= and =$var["\\\\" i]=.
 
 *** TODO "Globbing" section
 Document globbing.  e.g. *.el

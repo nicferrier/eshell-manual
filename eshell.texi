@@ -525,23 +525,73 @@ Lisp functions, based on successful completion).
 
 @node Arguments
 @chapter Arguments
+Command arguments are passed to the functions as either strings or
+numbers, depending on what the parser thinks they look like.  If you
+need to use a function that takes some other data type, you will need to
+call it in an Elisp expression (which can also be used with
+@ref{Variables & Expansion, expansions}).  As with other shells, you can
+escape special characters and spaces with the backslash (@code{\}) and
+the single (@code{''}) and double {@code{""}) quotes.
 
 @menu
-* The Parser::
-* Variables::
-* Substitution::
+* Variables & Expansion::
 * Globbing::
 * Predicates::
 @end menu
 
-@node The Parser
-@section The Parser
-
-@node Variables
+@node Variables & Expansion
 @section Variables
+Since Eshell is just an Emacs REPL@footnote{Read-Eval-Print Loop}, it
+does not have its own scope, and simply stores variables the same you
+would in an Elisp program.  Eshell provides a command version of
+@code{setq} for convenience.
 
-@node Substitution
-@section Substitution
+@section Expansion
+Eshell has different expansion syntax from other shells.  There are some
+similarities, but don't let these lull you into a false sense of
+familiarity.  Expansions are usually passed as arguments, but may also
+be used as commands.
+
+@table @code
+
+@item $var
+Expands to the value bound to @code{var}.  This is the main way to use variables in command invocations.
+
+@item $#var
+Expands to the length of the value bound to @code{var}.  Raises an error if the value is not a sequence (@pxref{Sequences Arrays and Vectors, Sequences, , elisp}).
+
+@item $(lisp)
+Expands to the result of evaluating the S-expression @code{(lisp)}.  On its own, this is identical to just @code{(lisp)}, but with the @code{$}, it can be used in a string, such as @samp{/some/path/$(lisp).txt}.
+
+@item ${command}
+Returns the output of @samp{command}, which can be any valid Eshell command invocation, and may even contain expansions.
+
+@item $var[i]
+Expands to the @code{i}th element of the value bound to @code{var}.  If the value is a string, it will be split at whitespace to make it a list.  Again, raises an error if the value is not a sequence.
+
+@item $var[: i]
+As above, but now splitting occurs at the colon character.
+
+@item $var[: i j]
+As above, but instead of returning just a string, it now returns a list
+of two strings.  If the result is being interpolated into a larger
+string, this list will be flattened into one big string, with each
+element separated by a space.
+
+@item $var["\\\\" i]
+Separate on backslash characters.  Actually, the first argument -- if it
+doesn't have the form of a number, or a plain variable name -- can be
+any regular expression.  So to split on numbers, use @samp{$var["[0-9]+" 10 20]}.
+
+@item $var[hello]
+Calls @code{assoc} on @code{var} with @code{"hello"}, expecting it to be
+an alist (@pxref{Association List Type, Association Lists, , elisp}).
+
+@item $#var[hello]
+Returns the length of the cdr of the element of @code{var} who car is equal
+to @code{"hello"}.
+
+@end table
 
 @node Globbing
 @section Globbing
