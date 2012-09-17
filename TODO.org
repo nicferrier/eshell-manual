@@ -4,7 +4,7 @@
 ** TODO "Commands" chapter
 Expand introductory paragraph.
 
-*** TODO "Invocation" section
+*** DONE "Invocation" section
 Expand this a bit to mention how external commands are invoked, the order of searching, and refer to the section on the parser.
 
 *** TODO "Completion" section
