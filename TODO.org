@@ -1,104 +1,14 @@
 #+STARTUP: content
 
 * Documentation
-** DONE "Commands" chapter
-Expand introductory paragraph.
-
-*** DONE "Invocation" section
-Expand this a bit to mention how external commands are invoked, the order of searching, and refer to the section on the parser.
-
-*** TODO "Completion" section
+** TODO Completion
 Document Eshell completion.
 
-*** DONE "Aliases" section
-Briefly describe Eshell aliases, and mention the aliases file.
-
-*** DONE "History" section
-Appears to be complete already.  Mention the history file.
-
-*** DONE "Scripts" section
-Briefly describe how scripts are loaded.
-
-*** TODO "Built-ins" node [1/2]
-**** DONE "Built-in commands" section [52/52]
-Document each built-in command that has behaviour different to the external command of the same name.
-
-- [X] .
-- [X] addpath
-- [X] agrep
-- [X] alias
-- [X] basename
-- [X] cat
-- [X] cd
-- [X] cp
-- [X] date
-- [X] define
-- [X] diff
-- [X] dirname
-- [X] dirs
-- [X] du
-- [X] echo
-- [X] egrep
-- [X] env
-- [X] eshell-debug
-- [X] exit
-- [X] export
-- [X] fgrep
-- [X] glimpse
-- [X] grep
-- [X] history
-- [X] info
-- [X] jobs
-- [X] kill
-- [X] listify
-- [X] ln
-- [X] locate
-- [X] ls
-- [X] make
-- [X] man
-- [X] mkdir
-- [X] mv
-- [X] occur
-- [X] popd
-- [X] printnl
-- [X] pushd
-- [X] pwd
-- [X] rm
-- [X] rmdir
-- [X] setq
-- [X] source
-- [X] su
-- [X] sudo
-- [X] time
-- [X] umask
-- [X] unset
-- [X] wait
-- [X] which
-- [X] whoami
-
-**** TODO "Built-in variables" section
+** TODO Built-in variables
 This appears to be complete, but check the source for any unmentioned variables.
-
-** DONE "Arguments" chapter
-Write an overview paragraph, and fill in each subsection.
-
-*** DONE "Variables" section
-Document how variables are handled.
-
-*** TODO "Expansion" section
-Clarify =$var[: i j]= and =$var["\\\\" i]=.
-
-*** TODO "Globbing" section
-Document globbing.  e.g. *.el
-
-*** DONE "Predicates" section
-Briefly mentioned Eshell's support for Zsh-style globbing, referring reader to the Zsh manual.  Also mentions the customizable options =eshell-predicate-alist= and =eshell-modifier-alist=.
 
 ** TODO "Input/Output" chapter
 Document redirection.
-
-** DONE "Process control" chapter
-Remove this chapter and mention Eshell's lack of job control in the "Invocation" chapter.  Also mention the Bash-like =&= separator.
 
 ** TODO "Extension modules" chapter
 - [X] Find out from johnw what this should cover.
@@ -113,6 +23,8 @@ Add ability to kill non-process objects to match the documentation, and update t
 
 ** TODO Remove predicate reference
 Remove the functions =eshell-display-predicate-help= and =eshell-display-predicate-help= and their associated variables, since this is already better documented in the Zsh manual.  See [["Predicates"%20section][the corresponding TODO item for the documentation]].
+
+The chapter "Expansion" covers behaviour implemented in three Eshell modules: esh-var, em-glob, and em-pred.  em-pred is the only one of these to have a syntax reference accessible via commands.  The syntax can be changed by the user, possibly making this reference incorrect or incomplete because it is hard-coded into the source code, so I think this should be removed, especially as the syntax is already documented more fully in the Zsh manual.
 
 ** TODO Angle brackets
 Figure out what angle brackets mean in Eshell.  See lines 37-39 of ~esh-var.el~.  They seem to be a half-baked implementation of Bash's =<()= behaviour.
