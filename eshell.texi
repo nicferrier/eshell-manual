@@ -325,7 +325,7 @@ need to use a function that takes some other data type, you will need to
 call it in an Elisp expression (which can also be used with
 @ref{Expansion, expansions}).  As with other shells, you can
 escape special characters and spaces with the backslash (@code{\}) and
-the single (@code{''}) and double {@code{""}) quotes.
+the single (@code{''}) and double (@code{""}) quotes.
 
 @node Built-ins
 
@@ -572,19 +572,26 @@ of familiarity.
 @table @code
 
 @item $var
-Expands to the value bound to @code{var}.  This is the main way to use variables in command invocations.
+Expands to the value bound to @code{var}.  This is the main way to use
+variables in command invocations.
 
 @item $#var
-Expands to the length of the value bound to @code{var}.  Raises an error if the value is not a sequence (@pxref{Sequences Arrays and Vectors, Sequences, , elisp}).
+Expands to the length of the value bound to @code{var}.  Raises an error
+if the value is not a sequence (@pxref{Sequences Arrays and Vectors, Sequences, , elisp}).
 
 @item $(lisp)
-Expands to the result of evaluating the S-expression @code{(lisp)}.  On its own, this is identical to just @code{(lisp)}, but with the @code{$}, it can be used in a string, such as @samp{/some/path/$(lisp).txt}.
+Expands to the result of evaluating the S-expression @code{(lisp)}.  On
+its own, this is identical to just @code{(lisp)}, but with the @code{$},
+it can be used in a string, such as @samp{/some/path/$(lisp).txt}.
 
-@item ${command}
-Returns the output of @samp{command}, which can be any valid Eshell command invocation, and may even contain expansions.
+@item $@{command@}
+Returns the output of @command{command}, which can be any valid Eshell
+command invocation, and may even contain expansions.
 
 @item $var[i]
-Expands to the @code{i}th element of the value bound to @code{var}.  If the value is a string, it will be split at whitespace to make it a list.  Again, raises an error if the value is not a sequence.
+Expands to the @code{i}th element of the value bound to @code{var}.  If
+the value is a string, it will be split at whitespace to make it a list.
+Again, raises an error if the value is not a sequence.
 
 @item $var[: i]
 As above, but now splitting occurs at the colon character.
@@ -615,9 +622,9 @@ to @code{"hello"}.
 Eshell's globbing syntax is very similar to that of Zsh.  Users coming
 from Bash can still use Bash-style globbing, as there are no
 incompatibilities.  Most globbing is pattern-based expansion, but there
-is also predicate-based expansion.  @xref{Filename Generation, , , zsh}
+is also predicate-based expansion.  See @ref{Filename Generation, , , zsh}
 for full syntax.  To customize the syntax and behaviour of globbing in
-Eshell see the Customize@footnote{@xref{Customization Settings, Customize, , elisp}}
+Eshell see the Customize@footnote{@xref{Customization Settings, Customize, , elisp}.}
 groups ``eshell-glob'' and ``eshell-pred''.
 
 @node Input/Output
