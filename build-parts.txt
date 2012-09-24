@@ -1,0 +1,3 @@
+dir
+eshell.info
+eshell-manual.el
