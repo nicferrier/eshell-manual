@@ -17,6 +17,9 @@ Document redirection.
 ** TODO "Extras and Goodies" chapter
 This should be removed until the manual is finished and there are any miscellaneous topics left undocumented.
 
+** TODO Remove Zsh references
+Figure out exactly what Zsh-style syntax Eshell supports (for globbing), and document it to obsolete the need for referring to the Zsh manual.
+
 * Code
 ** TODO Fix =eshell/kill=
 Add ability to kill non-process objects to match the documentation, and update the documentation to describe usage in more detail.
