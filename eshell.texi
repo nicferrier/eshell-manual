@@ -45,7 +45,7 @@ developing GNU and promoting software freedom.''
 @c -release-
 @end ignore
 @sp 3
-@center John Wiegley
+@center John Wiegley & Aidan Gauland
 @c -date-
 
 @page
