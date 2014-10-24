@@ -91,7 +91,7 @@ handling the sort of tasks accomplished by those tools.
 * Command Index::
 @end menu
 
-@node What is Eshell?
+@node What is Eshell?, Command basics, Top, Top
 @chapter What is Eshell?
 @cindex what is Eshell?
 @cindex Eshell, what it is
@@ -147,7 +147,7 @@ it's easier than it looks: @code{ls -lt **/*.doc(Lk+50aM+5)}.}
 * Contributors to Eshell::      People who have helped out!
 @end menu
 
-@node Contributors to Eshell
+@node Contributors to Eshell,  , What is Eshell?, What is Eshell?
 @section Contributors to Eshell
 @cindex contributors
 @cindex authors
@@ -187,7 +187,7 @@ Apart from these, a lot of people have sent suggestions, ideas,
 requests, bug reports and encouragement.  Thanks a lot!  Without you
 there would be no new releases of Eshell.
 
-@node Command basics
+@node Command basics, Commands, What is Eshell?, Top
 @chapter Basic overview
 
 A command shell is a means of entering verbally-formed commands.  This
@@ -201,7 +201,7 @@ things.
 * Command arguments::           Some verbs require arguments.
 @end menu
 
-@node Commands verbs
+@node Commands verbs, Command arguments, Command basics, Command basics
 @section Commands verbs
 
 Commands are expressed using @dfn{script}, a special shorthand language
@@ -244,7 +244,7 @@ textual arguments, numerical arguments---even Lisp arguments.
 Distinguishing these different types of arguments requires special
 typing, for the computer to know exactly what you mean.
 
-@node Command arguments
+@node Command arguments,  , Commands verbs, Command basics
 @section Command arguments
 
 Eshell recognizes several different kinds of command arguments:
@@ -279,7 +279,7 @@ with Eshell as a basic command invocation tool, and learn more about the
 commands on your system; then come back when it all sits more familiarly
 on your mind.  Have fun!
 
-@node Commands
+@node Commands, Expansion, Command basics, Top
 @chapter Commands
 
 In a command shell, everything is done by invoking commands.  This
@@ -289,15 +289,16 @@ history and invoking commands in a script file.
 @menu
 * Invocation::
 * Arguments::
-* Variables::
 * Built-ins::
+* Built-in variables::
+* Variables::
 * Aliases::
 * History::
 * Completion::
 * Scripts::
 @end menu
 
-@node Invocation
+@node Invocation, Arguments, Commands, Commands
 @section Invocation
 Unlike regular system shells, Eshell never invokes kernel functions
 directly, such as @code{exec(3)}.  Instead, it uses the Lisp functions
@@ -318,7 +319,7 @@ bring a background process into the foreground.  That said, background
 processes invoked from Eshell can be controlled the same way as any
 other background process in Emacs.
 
-@node Arguments
+@node Arguments, Built-ins, Invocation, Commands
 @section Arguments
 Command arguments are passed to the functions as either strings or
 numbers, depending on what the parser thinks they look like.  If you
@@ -328,8 +329,7 @@ call it in an Elisp expression (which can also be used with
 escape special characters and spaces with the backslash (@code{\}) and
 the single (@code{''}) and double (@code{""}) quotes.
 
-@node Built-ins
-
+@node Built-ins, Built-in variables, Arguments, Commands
 @section Built-in commands
 Several commands are built-in in Eshell.  In order to call the
 external variant of a built-in command @code{foo}, you could call
@@ -457,6 +457,7 @@ Uses TRAMP's @command{su} or @command{sudo} method to run a command via
 
 @end table
 
+@node Built-in variables, Variables, Built-ins, Commands
 @section Built-in variables
 Eshell knows a few built-in variables:
 
@@ -487,14 +488,14 @@ Lisp functions, based on successful completion).
 
 @end table
 
-@node Variables
+@node Variables, Aliases, Built-in variables, Commands
 @section Variables
 Since Eshell is just an Emacs REPL@footnote{Read-Eval-Print Loop}, it
 does not have its own scope, and simply stores variables the same you
 would in an Elisp program.  Eshell provides a command version of
 @code{setq} for convenience.
 
-@node Aliases
+@node Aliases, History, Variables, Commands
 @section Aliases
 
 Aliases are commands that expand to a longer input line.  For example,
@@ -504,7 +505,7 @@ running @samp{ll foo} in Eshell will actually run @samp{ls -l foo}.
 They are defined in the file specified by @var{eshell-aliases-file}, one
 per line, in the form @samp{alias ll ls -l} (using the above example).
 
-@node History
+@node History, Completion, Aliases, Commands
 @section History
 @cmindex history
 The @samp{history} command shows all commands kept in the history ring
@@ -528,10 +529,10 @@ is specified in @var{eshell-history-file-name}.  Unlike other shells,
 such as Bash, Eshell can not be configured to keep a history ring of a
 different size than the size of the history file.
 
-@node Completion
+@node Completion, Scripts, History, Commands
 @section Completion
 
-@node Scripts
+@node Scripts,  , Completion, Commands
 @section Scripts
 @cmindex source
 @fnindex eshell-source-file
@@ -546,7 +547,7 @@ with @code{eshell-source-file}.
 If you wish to load a script into your @emph{current} environment,
 rather than in a subshell, use the @code{.} command.
 
-@node Expansion
+@node Expansion, Input/Output, Commands, Top
 @chapter Expansion
 Expansion in a command shell is somewhat like macro expansion in macro
 parsers (such as @command{cpp} and @command{m4}), but in a command
@@ -564,7 +565,7 @@ is equivalent to entering the value of @code{var} at the prompt.}
 * Globbing::
 @end menu
 
-@node Dollars Expansion
+@node Dollars Expansion, Globbing, Expansion, Expansion
 @section Dollars Expansion
 Eshell has different @code{$} expansion syntax from other shells.  There
 are some similarities, but don't let these lull you into a false sense
@@ -618,7 +619,7 @@ to @code{"hello"}.
 
 @end table
 
-@node Globbing
+@node Globbing,  , Dollars Expansion, Expansion
 @section Globbing
 Eshell's globbing syntax is very similar to that of Zsh.  Users coming
 from Bash can still use Bash-style globbing, as there are no
@@ -628,10 +629,10 @@ for full syntax.  To customize the syntax and behaviour of globbing in
 Eshell see the Customize@footnote{@xref{Customization Settings, Customize, , elisp}.}
 groups ``eshell-glob'' and ``eshell-pred''.
 
-@node Input/Output
+@node Input/Output, Extension modules, Expansion, Top
 @chapter Input/Output
 
-@node Extension modules
+@node Extension modules, Extras and Goodies, Input/Output, Top
 @chapter Extension modules
 
 @menu
@@ -643,28 +644,28 @@ groups ``eshell-glob'' and ``eshell-pred''.
 * Terminal emulation::
 @end menu
 
-@node Writing a module
+@node Writing a module, Module testing, Extension modules, Extension modules
 @section Writing a module
 
-@node Module testing
+@node Module testing, Directory handling, Writing a module, Extension modules
 @section Module testing
 
-@node Directory handling
+@node Directory handling, Key rebinding, Module testing, Extension modules
 @section Directory handling
 
-@node Key rebinding
+@node Key rebinding, Smart scrolling, Directory handling, Extension modules
 @section Key rebinding
 
-@node Smart scrolling
+@node Smart scrolling, Terminal emulation, Key rebinding, Extension modules
 @section Smart scrolling
 
-@node Terminal emulation
+@node Terminal emulation,  , Smart scrolling, Extension modules
 @section Terminal emulation
 
-@node Extras and Goodies
+@node Extras and Goodies, Bugs and ideas, Extension modules, Top
 @chapter Extras and Goodies
 
-@node Bugs and ideas
+@node Bugs and ideas, GNU Free Documentation License, Extras and Goodies, Top
 @chapter Bugs and ideas
 @cindex reporting bugs and ideas
 @cindex bugs, how to report them
@@ -686,7 +687,7 @@ find this package useful!
 * Known problems::
 @end menu
 
-@node Known problems
+@node Known problems,  , Bugs and ideas, Bugs and ideas
 @section Known problems
 @cindex known bugs
 @cindex bugs, known
@@ -1139,26 +1140,26 @@ Since it keeps the cursor up where the command was invoked.
 
 @end table
 
-@node GNU Free Documentation License
+@node GNU Free Documentation License, Concept Index, Bugs and ideas, Top
 @appendix GNU Free Documentation License
 @include doclicense.texi
 
-@node Concept Index
+@node Concept Index, Function and Variable Index, GNU Free Documentation License, Top
 @unnumbered Concept Index
 
 @printindex cp
 
-@node Function and Variable Index
+@node Function and Variable Index, Command Index, Concept Index, Top
 @unnumbered Function and Variable Index
 
 @printindex fn
 
-@node Command Index
+@node Command Index, Key Index, Function and Variable Index, Top
 @unnumbered Command Index
 
 @printindex cm
 
-@node Key Index
+@node Key Index,  , Command Index, Top
 @unnumbered Key Index
 
 @printindex ky
