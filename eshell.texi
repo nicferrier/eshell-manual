@@ -36,9 +36,9 @@ developing GNU and promoting software freedom.''
 @sp 4
 @c The title is printed in a large font.
 @center @titlefont{User's Guide}
-@sp
+@sp 2
 @center @titlefont{to}
-@sp
+@sp 2
 @center @titlefont{Eshell: The Emacs Shell}
 @ignore
 @sp 2
