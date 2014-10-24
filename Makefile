@@ -2,11 +2,9 @@
 
 # These are the variables that are specific to the package
 NAME=eshell-manual
-#VERSION=$(shell git show | head -n1 | cut -d' ' -f2 | head -c8)
 VERSION=20141024
-DOC="An updated manual for Eshell."
+DOC="An manual for Eshell."
 
-# Everything beyond here should be generic
 package_parts = $(shell cat build-parts.txt)
 PACKAGE=$(NAME)-$(VERSION)
 TARBALL=$(PACKAGE).tar 

@@ -1,0 +1,13 @@
+eshell is great but doesn't have a decent manual.
+
+Someone wrote a manual and added it to the
+[[http://emacswiki.org|EmacsWiki]] back in 
+[[http://emacswiki.org/emacs/CategoryEshell|2008]].
+
+Now we have packages we can make this available in Emacs for other
+people.
+
+That's what this does.
+
+I guess it also serves as an example of how to build info files in
+Emacs packages.
