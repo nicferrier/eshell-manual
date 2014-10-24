@@ -1,3 +1,3 @@
-dir
-eshell.info
-eshell-manual.el
+dist/dir
+dist/eshell.info
+dist/eshell-manual.el

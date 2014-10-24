@@ -2,7 +2,8 @@
 
 # These are the variables that are specific to the package
 NAME=eshell-manual
-VERSION=$(shell git show | head -n1 | cut -d' ' -f2 | head -c8)
+#VERSION=$(shell git show | head -n1 | cut -d' ' -f2 | head -c8)
+VERSION=20141024
 DOC="An updated manual for Eshell."
 
 # Everything beyond here should be generic
@@ -17,28 +18,33 @@ clean-elc:
 	rm -f *.elc
 
 clean: clean-elc
+	rm -rf dist
 	rm -f eshell.info
 	rm -f dir
 	rm -f $(TARBALL)
 	rm -rf $(PACKAGE) 
 	rm -f $(NAME)-pkg.el
 
-tarball: $(TARBALL)
+dist:
+	mkdir dist
+	cp eshell-manual.el dist
+
+tarball: dist $(TARBALL)
 
 $(TARBALL): $(PACKAGE) $(PACKAGE)/$(NAME)-pkg.el
 	tar cf $@ $<
 
 $(PACKAGE): $(package_parts)
-	mkdir $@
+	mkdir -p $@
 	cp $(package_parts) $@
 
 $(PACKAGE)/$(NAME)-pkg.el: $(PACKAGE)
 	echo "(define-package \"$(NAME)\" \"$(VERSION)\" \"$(DOC)\")" > $@
 
-dir: eshell.info
-	install-info --dir=dir eshell.info
+dist/dir: dist/eshell.info
+	install-info --dir=dist/dir dist/eshell.info
 
-eshell.info:
+dist/eshell.info:
 	makeinfo -o $@ eshell.texi
 
 # End
